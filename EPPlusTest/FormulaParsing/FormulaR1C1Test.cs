@@ -234,5 +234,13 @@ namespace EPPlusTest.FormulaParsing
             Assert.AreEqual("A3", _sheet.Cells["B3"].Formula);
 
         }
+
+        [TestMethod]
+        public void ConvertSubFormulaToR1C1()
+        {
+            const string formula = "INDEX(Сводка!$A:$K,MATCH($A$1,Сводка!$A:$A,0)+Таблица2[[#This Row],[№п/п]]-1,2)";
+            var formulaR1C1 = ExcelCellBase.TranslateToR1C1(formula, 1, 2);
+            Assert.AreEqual("INDEX(СВОДКА!C1:C11,MATCH(R1C1,СВОДКА!C1,0)+ТАБЛИЦА2[[#THIS ROW],[№П/П]]-1,2)", formulaR1C1);
+        }
     }
 }
