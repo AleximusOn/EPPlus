@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;net35;net40</TargetFrameworks>
-    <AssemblyVersion>4.5.3.3</AssemblyVersion>
-    <FileVersion>4.5.3.3</FileVersion>
-    <Version>4.5.3.3</Version>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net40</TargetFrameworks>
+    <AssemblyVersion>4.5.3.4</AssemblyVersion>
+    <FileVersion>4.5.3.4</FileVersion>
+    <Version>4.5.3.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/JanKallman/EPPlus</PackageProjectUrl>
     <Authors>Jan Källman</Authors>
     <Company></Company>
-    <Product>EPPlus</Product>
+    <Product>EPPlus.CaseOne</Product>
     <Description>Create advanced Excel spreadsheets using .NET</Description>
     <AssemblyName>EPPlus</AssemblyName>
     <RootNamespace>EPPlus</RootNamespace>
@@ -236,6 +236,7 @@ Release Candidate changes
     <AssemblyOriginatorKeyFile>OpenOfficeXml.snk</AssemblyOriginatorKeyFile>
     <NeutralLanguage />
     <PackageLicenseFile>lgpl-3.0.txt</PackageLicenseFile>
+    <PackageId>EPPlus.CaseOne</PackageId>
   </PropertyGroup>
  
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
