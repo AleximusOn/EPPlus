@@ -730,7 +730,26 @@ namespace OfficeOpenXml
             }
             else if (row <= _fromRow)
             {
-                return new ExcelAddressBase((setFixed && _fromRowFixed ? _fromRow : _fromRow + rows), _fromCol, (setFixed && _toRowFixed ? _toRow : _toRow + rows), _toCol, _fromRowFixed, _fromColFixed, _toRowFixed, _toColFixed);
+	            var newFromRow = _fromRow + rows;
+	            if (setFixed && _fromRowFixed)
+	            {
+		            newFromRow = _fromRow;
+	            }
+                else if (_fromRowFixed && _toRowFixed 
+						 && _fromRow == 1 && _toRow == ExcelPackage.MaxRows)
+	            {
+		            newFromRow = _fromRow;
+	            }
+
+	            var newToRow = Math.Min((setFixed && _toRowFixed ? _toRow : _toRow + rows), ExcelPackage.MaxRows);
+	            return new ExcelAddressBase(newFromRow, 
+	                _fromCol, 
+	                newToRow, 
+	                _toCol, 
+	                _fromRowFixed, 
+	                _fromColFixed, 
+	                _toRowFixed, 
+	                _toColFixed);
             }
             else
             {
