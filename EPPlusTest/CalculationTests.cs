@@ -269,7 +269,7 @@ namespace EPPlusTest
             var pck = new ExcelPackage();
             var ws = pck.Workbook.Worksheets.Add("CalcTest");
             var currentDate = DateTime.UtcNow.Date;
-            ws.SetValue("A1", currentDate.ToString("MM/dd/yyyy"));
+            ws.SetValue("A1", currentDate.ToShortDateString());
             ws.SetValue("A2", currentDate.Date);
             ws.SetValue("A3", "31.1");
             ws.SetValue("A4", 31.1);
