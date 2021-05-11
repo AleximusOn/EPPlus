@@ -609,6 +609,9 @@ namespace OfficeOpenXml
               }
             }
           }
+
+          fixedRow |= row == 0;
+          fixedCol |= col == 0;
           return row != 0 || col != 0;
         }
 

@@ -11,7 +11,7 @@ namespace EPPlusTest
     {
         protected ExcelPackage _pck;
         protected string _clipartPath="";
-        protected string _worksheetPath= @"c:\epplusTest\Testoutput\";
+        protected string _worksheetPath;
         protected string _testInputPath = @"c:\epplusTest\workbooks\";
         public TestContext TestContext { get; set; }
         
@@ -49,14 +49,14 @@ namespace EPPlusTest
                     }
                 }
             }
-            
-            //_worksheetPath = Path.Combine(Path.GetTempPath(), @"EPPlus worksheets");
-            //if (!Directory.Exists(_worksheetPath))
-            //{
-            //    Directory.CreateDirectory(_worksheetPath);
-            //}
-            var di=new DirectoryInfo(_worksheetPath);            
-            _worksheetPath = di.FullName + "\\";
+
+			_worksheetPath = Path.Combine(Path.GetTempPath(), @"EPPlus worksheets");
+			if (!Directory.Exists(_worksheetPath))
+			{
+				Directory.CreateDirectory(_worksheetPath);
+			}
+			//var di=new DirectoryInfo(_worksheetPath);            
+			//_worksheetPath = di.FullName + "\\";
 
             _pck = new ExcelPackage();
         }

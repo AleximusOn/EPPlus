@@ -319,6 +319,26 @@ namespace EPPlusTest
             Assert.IsFalse(ExcelCellBase.IsValidAddress("$A$12:$XY$13,$A12:XY$14$"));
         }
 
+        [DataTestMethod]
+        [DataRow(1 ,5)]
+        [DataRow(1, ExcelPackage.MaxRows)]
+        [DataRow(2, 1)]
+        [DataRow(ExcelPackage.MaxRows, 5)]
+        [DataRow(ExcelPackage.MaxRows, ExcelPackage.MaxRows)]
+        public void InsertRow_ExtendColumnTest(int fromRowIndex, int insertedRows)
+        {
+	        using (var package = new ExcelPackage())
+	        {
+                const string formula = "'NEW'!$A:$A";
+                var workbook = package.Workbook;
+		        var sheet1 = package.Workbook.Worksheets.Add("NEW");
+		        var sheet2 = package.Workbook.Worksheets.Add("NEW2");
+		        sheet2.Cells[1, 1].Formula = formula;
 
+		        sheet1.InsertRow(fromRowIndex, insertedRows);
+
+		        Assert.AreEqual(formula, sheet2.Cells[1, 1].Formula);
+	        }
+        }
     }
 }
