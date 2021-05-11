@@ -753,7 +753,16 @@ namespace OfficeOpenXml
             }
             else
             {
-                return new ExcelAddressBase(_fromRow, _fromCol, (setFixed && _toRowFixed ? _toRow : _toRow + rows), _toCol, _fromRowFixed, _fromColFixed, _toRowFixed, _toColFixed);
+                return new ExcelAddressBase(_fromRow,
+	                _fromCol,
+	                (setFixed && _toRowFixed
+		                ? _toRow
+		                : Math.Min(_toRow + rows, ExcelPackage.MaxRows)),
+	                _toCol,
+	                _fromRowFixed,
+	                _fromColFixed,
+	                _toRowFixed,
+	                _toColFixed);
             }
         }
         internal ExcelAddressBase DeleteRow(int row, int rows, bool setFixed = false)
